@@ -1,0 +1,9 @@
+-- 코드를 입력하세요
+set @H = -1;
+
+select (@H := @H + 1),
+(select count(*)
+ from animal_outs
+ where HOUR(datetime) = @H)
+from animal_outs
+where @H < 23;
